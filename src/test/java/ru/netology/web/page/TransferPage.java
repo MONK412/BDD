@@ -1,6 +1,7 @@
 package ru.netology.web.page;
 
 import com.codeborne.selenide.SelenideElement;
+import org.openqa.selenium.Keys;
 
 import static com.codeborne.selenide.Selenide.$;
 
@@ -14,5 +15,12 @@ public class TransferPage {
         ammount.setValue(Integer.toString(value));
         from.setValue(String.valueOf(cardNumber));
         replenishButton.click();
+    }
+
+    public void clearTransferData() {
+        ammount.sendKeys(Keys.CONTROL + "A");
+        ammount.sendKeys(Keys.BACK_SPACE);
+        from.sendKeys(Keys.CONTROL + "A");
+        from.sendKeys(Keys.BACK_SPACE);
     }
 }

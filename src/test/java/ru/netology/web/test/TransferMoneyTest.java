@@ -12,8 +12,8 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class TransferMoneyTest {
 
-    @BeforeEach
-    void setup() {
+    @BeforeAll
+    static void setup() {
         Configuration.holdBrowserOpen = true;
         var loginPage = open("http://localhost:9999", LoginPage.class);
         var authInfo = DataHelper.getAuthInfo();
@@ -31,6 +31,7 @@ public class TransferMoneyTest {
         var secondCardBalance1 = dashboardPage.getSecondCardBalance();
         dashboardPage.transferFromFirstToSecond();
         val transferPage = new TransferPage();
+        transferPage.clearTransferData();
         transferPage.importTransferData(value, cardNumber);
         var firstCardBalance2 = dashboardPage.getFirstCardBalance();
         var secondCardBalance2 = dashboardPage.getSecondCardBalance();
@@ -47,6 +48,7 @@ public class TransferMoneyTest {
         var secondCardBalance1 = dashboardPage.getSecondCardBalance();
         dashboardPage.transferFromSecondToFirst();
         val transferPage = new TransferPage();
+        transferPage.clearTransferData();
         transferPage.importTransferData(value, cardNumber);
         var firstCardBalance2 = dashboardPage.getFirstCardBalance();
         var secondCardBalance2 = dashboardPage.getSecondCardBalance();
@@ -63,6 +65,7 @@ public class TransferMoneyTest {
         var secondCardBalance1 = dashboardPage.getSecondCardBalance();
         dashboardPage.transferFromFirstToSecond();
         val transferPage = new TransferPage();
+        transferPage.clearTransferData();
         transferPage.importTransferData(value, cardNumber);
         var firstCardBalance2 = dashboardPage.getFirstCardBalance();
         var secondCardBalance2 = dashboardPage.getSecondCardBalance();
@@ -79,6 +82,7 @@ public class TransferMoneyTest {
         var secondCardBalance1 = dashboardPage.getSecondCardBalance();
         dashboardPage.transferFromSecondToFirst();
         val transferPage = new TransferPage();
+        transferPage.clearTransferData();
         transferPage.importTransferData(value, cardNumber);
         var firstCardBalance2 = dashboardPage.getFirstCardBalance();
         var secondCardBalance2 = dashboardPage.getSecondCardBalance();
